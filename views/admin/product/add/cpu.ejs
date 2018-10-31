@@ -1,0 +1,88 @@
+
+<form action="/admin/product/add" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="name" value="" name="name" value="" class="form-control" id="exampleInputEmail1" >
+    </div>
+    <input type="hidden" name="idds" value="<%= cateAlias %>">
+    <div class="form-group">
+        <label for="exampleInputCate">Thương hiệu</label>                                
+        <select class="form-control" name="nsx" id="exampleInputCate">
+            <% thuonghieu.forEach(e => { %>
+                
+                <option value= '<%= e.id %>'> <%= e.ten_nsx %></option>
+               
+            <% }) %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Hình ảnh</label>
+        
+        <input type="file" name="file" id="exampleInputImg" >
+        <input type="file" name="file"  id="exampleInputImg" >
+        <input type="file" name="file"  id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Giá (VND)</label>
+        <input type="name" name="price" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Sale Off (VND)</label>
+            <input type="name" name="saleOff" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Số lượng</label>
+        <input type="name" name="quality" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Bảo hành</label>
+            <input type="name" name="baohanh" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Socket</label>
+            <input type="name" name="socket" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Dòng</label>
+            <input type="name" name="dong" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Số nhân</label>
+            <input type="name" name="sonhan" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Số luồng</label>
+            <input type="name" name="luongcpu" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Bộ nhớ</label>
+        <input type="name" name="bonho" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Đồ họa tích hợp</label>
+        <input type="name" name="dohoatichhop" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Điện tiêu thụ</label>
+        <input type="name" name="dientieuthu" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Xung cơ bản</label>
+        <input type="name" name="xungcoban" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Xung tối đa</label>
+        <input type="name" name="xungtoida" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Chi tiết</label>
+        <textarea id="description" name="description"  class="form-control" rows="4" ></textarea>
+        
+        
+    </div>
+    
+    
+    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-danger">Cancel</button>
+</form>

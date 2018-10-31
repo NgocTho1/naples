@@ -1,0 +1,317 @@
+<% include ../../layouts/header.ejs %>
+
+<script>
+        function imageZoom(imgID, resultID) {
+            var img, lens, result, cx, cy;
+            img = document.getElementsByClassName(imgID)
+            result = document.getElementById(resultID);
+            /*create lens:*/
+
+            lens = document.createElement("DIV");
+            lens.setAttribute("class", "img-zoom-lens");
+            /*insert lens:*/
+            img[0].parentElement.insertBefore(lens, img[0]);
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+
+            //alert(lens.offsetWidth)
+            /*set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img[0].src + "')";
+            result.style.backgroundSize = (img[0].width * cx) + "px " + (img[0].height * cy) + "px";
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img[0].addEventListener("mousemove", moveLens);
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img[0].addEventListener("touchmove", moveLens);
+
+            function moveLens(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                /*calculate the position of the lens:*/
+                x = pos.x - (lens.offsetWidth / 2);
+                y = pos.y - (lens.offsetHeight / 2);
+                //alert(lens.offsetHeight)
+                /*prevent the lens from being positioned outside the image:*/
+                if (x > img[0].width - lens.offsetWidth) {
+                    x = img[0].width - lens.offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > img[0].height - lens.offsetHeight) {
+                    y = img[0].height - lens.offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /*set the position of the lens:*/
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                /*display what the lens "sees":*/
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+
+            function getCursorPos(e) {
+                var a, x = 0,
+                    y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img[0].getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {
+                    x: x,
+                    y: y
+                };
+            }
+        }
+       
+</script>
+<% 
+  
+      function chuyentien(e) {
+          let vitri = e.split('');
+          let result = '';
+          let index = Math.ceil((vitri.length)/3);
+          if(index == 2) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+          }
+          if(index == 3) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1= vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+          if(index == 4) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1 = vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+
+              let add2 = vitri.length - 11;
+              vitri.splice(add2, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+
+
+
+      }
+
+ %>
+    <div class="container" id="product">
+        <div class="row">
+            <div class="col-lg-6 product-image">
+                
+                <% let img = pro[0].hinh_anh.split(',') %> 
+                <div class="product-main-image">
+                    <% img.forEach(function(pro) { %>
+                        <img class="zoomcontainer" src="<%= pro %>" alt="">
+                        <% }) %>
+
+
+                    <div id="myresult" class="img-zoom-result"></div>
+                </div>
+                <div class="product-other-image">
+
+                    <% img.forEach(function(image){%>
+                        <img width="80px" height="80px" src="<%= image %>" alt="">
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3><%= pro[0].ten %></h3>
+                <div class="detail-product">
+                    <div>Mô tả sản phẩm : </div>
+                    <p>Bộ nhớ : <%= pro[0].bo_nho %>GB</p>
+                    <p>Cổng kết nối : <%= pro[0].cong_giao_tiep %></p>
+                    <p>Nguồn tối thiểu : <%= pro[0].nguon %>W</p>
+                </div>
+                <div class="price-product">
+                    <% if(pro[0].giam_gia != 0) { %>
+                        <p class="final-price"><%= chuyentien(`${pro[0].giam_gia}`) %> ₫</p>
+                        <div class="sale-price">
+                            
+                            <del><%= chuyentien(`${pro[0].gia}`) %> ₫</del>
+                            <span class="sale">-<%= pro[0].percent %>%</span>
+                        </div>
+                    <% }else { %>
+                        <p class="final-price"><%= chuyentien(`${pro[0].gia}`) %> ₫</p>
+                    <% } %>
+                </div>
+                
+                <% if(pro[0].so_luong != 0){ %>
+                <div class="form-group qty-cart">
+                    <span>Số lượng :</span>
+                    <div class="input-group">
+                       <span class="input-group-prepend" >
+                           <button class="btn btn-outline-secondary minus" type="button">-</button>
+                       </span>
+                       <input type="text" class="form-control update" data-id="<%= pro[0].id %>" value="1" aria-describedby="basic-addon1">
+                       <span class="input-group-append">
+                           <button class="btn btn-outline-secondary plus" type="button" >+</button>
+                       </span>
+                   </div><!-- /input-group -->
+               </div>
+                <h3>
+                    <button class="btn btn-danger add-to-cart" role="button" data-toggle="modal" data-target="#exampleModal">Thêm vào giỏ hàng</button>
+                </h3>
+                <% }else { %>
+                    <button class="btn btn-danger" role="button" data-toggle="modal" >Sản phẩm tạm hết hàng</button>
+                <% } %>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Giỏ hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-tittle">
+                        <p class="p1">Sản phẩm</p>
+                        <p class="p2">Giá</p>
+                        <p class="p3">Số lượng</p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cart-content">
+                            <div class="img-cart">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    
+                    <a href="/checkout/orther" class="btn btn-danger">Đặt hàng ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="productId" value="<%= pro[0].id %>">
+        <input type="hidden" id="cateId" value="<%= cate[0].id %>">
+    </div>
+    <% include ./recommend %>
+    <div id="info-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 info-tittle">
+                    <p>Thông tin chi tiết</p>
+                </div>
+                <div class="col-lg-8 info-left">
+                    
+                </div>
+                <div class="col-lg-4 info-right">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Thương hiệu :</td>
+                                <% thuonghieu.forEach(e => { %>
+                                    <% if(e.id == pro[0].id_nsx) { %>
+                                        
+                                        <td><%= e.ten_nsx %></td>
+                                    <% } %>
+                                <% }) %>
+                            </tr>
+                            <tr>
+                                <td>Bảo hành (tháng) :</td>
+                                <td><%= pro[0].bao_hanh %></td>
+                            </tr>
+                            <tr>
+                                <td>Cổng kết nối :</td>
+                                <td><%= pro[0].cong_giao_tiep %></td>
+                            </tr>
+                            <tr>
+                                <td>Xung cơ bản :</td>
+                                <td><%= pro[0].xung_co_ban %> MHz</td>
+                            </tr>
+                            <tr>
+                                <td>Xung Boots :</td>
+                                <td><%= pro[0].xung_boost %> MHz</td>
+                            </tr>
+                            <tr>
+                                <td>Bộ nhớ :</td>
+                                <td><%= pro[0].bo_nho %>GB</td>
+                            </tr>
+                            <tr>
+                                <td>Kích thước :</td>
+                                <td><%= pro[0].kich_thuoc %></td>
+                            </tr>
+                            <tr>
+                                <td>Độ phân giải :</td>
+                                <td><%= pro[0].do_phan_giai %></td>
+                            </tr>
+                            <tr>
+                                <td>Nguồn yêu cầu :</td>
+                                <td><%= pro[0].nguon %>W</td>
+                            </tr>
+                           
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <% include ./daxem %>
+    <div class="modal fade" id="deleteCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa sản phẩm</h5>
+                    <button type="button" class="close class-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <div class="conttent-deleteCart">Bạn có đồng ý xóa sản phẩm ra khỏi danh sách?</div>
+                    <div class="btn-delete">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger accept">Đồng ý</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+    
+<script>
+        imageZoom('zoomcontainer', "myresult")
+</script>
+
+
+
+
+
+<% include ../../layouts/footer.ejs %>

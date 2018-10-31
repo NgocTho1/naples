@@ -1,0 +1,107 @@
+<% include ../layouts/header.ejs %>
+<% 
+  
+      function chuyentien(e) {
+          let vitri = e.split('');
+          let result = '';
+          let index = Math.ceil((vitri.length)/3);
+          if(index == 2) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+          }
+          if(index == 3) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1= vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+          if(index == 4) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1 = vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+
+              let add2 = vitri.length - 11;
+              vitri.splice(add2, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+
+
+
+      }
+
+ %>
+<div class="container order">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h3>Chi tiết đơn hàng : #<%= id %>
+                    <strong>
+
+                        <% if(checkout.state == 0) { %>
+                            Chờ xử lý
+                        <% }else if(checkout.state == 1) { %>
+                            Đang giao hàng
+                        <% }else{ %>
+                            Đã giao hàng
+                        <% } %>
+                    </strong>
+                </h3>
+                <div class="info-cart">
+                    <p>Thông tin người nhận : </p>
+                    <p>Tên : <%= checkout.ten %></p>
+                    <p>Số điện thoại : <%= checkout.phone %></p>
+                    <p>Địa chỉ: <%= checkout.diachi %></p>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            
+                        </tr>
+                    
+                    
+                        <% let total = 0; for(i = 0; i < proCheckout.length; i++) { total += proCheckout[i].price %>
+                        <tr>
+
+                                <td>
+                                    <a href="/<%= tenProduct[i].link %>.htm">
+                                        <%= tenProduct[i].ten %>
+                                    </a>
+                                </td>
+                                <td><%= proCheckout[i].so_luong %></td>
+                                <td><%= chuyentien(`${proCheckout[i].price}`) %> ₫</td>
+                                
+                                
+                                
+                            </tr>
+                        <% } %>
+                        <tr>
+                            <td></td>
+                            <td style="color : red">Tổng tiền</td>
+                            <td style="color : red"><%= chuyentien(`${total}`) %> ₫</td>
+                        </tr>
+                    
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+<% include ../layouts/footer.ejs %>

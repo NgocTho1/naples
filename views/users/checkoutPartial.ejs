@@ -1,0 +1,131 @@
+<% 
+  
+      function chuyentien(e) {
+          let vitri = e.split('');
+          let result = '';
+          let index = Math.ceil((vitri.length)/3);
+          if(index == 2) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+          }
+          if(index == 3) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1= vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+          if(index == 4) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1 = vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+
+              let add2 = vitri.length - 11;
+              vitri.splice(add2, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+
+
+
+      }
+
+ %>       
+       <% if(totalCartItems[0]) {%>
+        <div class="container">
+            <div class="row">
+                    <div class="col-lg-8">
+                        <div class="listHeader row">
+                            <div class="col-lg-7">Sản phẩm</div>
+                            <div class="col-lg-2">Giá</div>
+                            <div class="col-lg-3">Số lượng</div>
+                        </div>
+                        <% var totalPrice = 0; var totalQty = 0 %>
+    
+                        <% totalCartItems.forEach(e => { const img = e.item.hinh_anh.split(','); %>
+                            <% totalPrice += e.price; totalQty += e.qty; %>
+                            <% cate.forEach(cate => {  %>
+                                <% if(cate.id == e.item.id_ds) { %>
+                                    <div class="cart-content row">
+                                    
+                                        <div class="col-lg-7">
+                                            <a href="/<%= e.item.link %>.htm">
+                                                <div class="img-cart">
+                                                    <img src="<%= img[0] %>" width='100px' height='100px' alt="">
+                                                </div>
+                                                <p class="cart-tittle"><%= e.item.ten %></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2 price">
+                                            <span><%= chuyentien(`${e.price}`) %></span>
+                                        </div>
+                                        <div class="col-lg-3 qty">
+                                            <div class="form-group qty-cart">
+                                                    <div class="input-group add">
+                                                        <span class="input-group-prepend" >
+                                                            <button class="btn btn-outline-secondary cart-minus" type="button">-</button>
+                                                        </span>
+                                                        <input type="text" class="form-control cart-update" data-cate='<%= e.item.id_ds %>' data-id='<%= e.item.id %>' value="<%= e.qty %>" aria-describedby="basic-addon1">
+                                                        <span class="input-group-append">
+                                                            <button class="btn btn-outline-secondary cart-plus" type="button" >+</button>
+                                                        </span>
+                                                    </div><!-- /input-group -->
+                                                    
+                                            </div>
+                                            <span data-target="#deleteCart" role="button" data-toggle="modal" class="fas fa-trash-alt"></span>
+                                            
+                                        </div>
+                                            
+                                    </div>
+                                    
+                                <% } %>
+                            <% }) %>  
+                        <% }) %>
+                        <input type="hidden" id="totalQty" value="<%= totalQty %>">
+                        
+                        
+                    </div>
+                    <div class="col-lg-4">
+                        <div>Thông tin đơn hàng</div>
+                        <a class="checkout-orther" href="./checkout/orther">Tiến hành đặt hàng</a>
+                    </div>
+            </div>
+            
+        </div>
+        <% if(errQty == 1) {%>
+            
+            <div class="modal" id="myModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    
+                    <div class="modal-body">
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <p>Sản phẩm này chỉ cho đặt tối đa là : <%= qtyRepo %></p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <script>
+                $('#myModal').modal('show');
+            </script>
+        <% } %>
+    <% } else { %>
+    <div class="cart-empty">Không có sản phẩm nào trong giỏ hàng</div>
+<% } %>

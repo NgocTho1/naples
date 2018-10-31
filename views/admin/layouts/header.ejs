@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <base href="http://localhost:4300">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+
+<body>
+   
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+                <div class="side-menu">
+                    <ul class="side-menu-list">
+                        <li >
+                            <a href="">
+                                <i class="fas fa-home"></i>
+                                <span style="color: #DCDCDC">Dashboard</span>
+                                
+                            </a>
+                            
+                        </li>
+                        <li >
+                            <a href="javascript:void(0)" data-toggle="collapse" data-target="#category">
+                                <i class="fas fa-location-arrow"></i>
+                                <span style="color: #DCDCDC">Nhà sản xuất</span>
+                                <i class="fas fa-chevron-down"></i> 
+                            </a>
+                            <ul id="category" class="collapse">
+                                <li>
+                                    <a href="admin/cate/danh-sach">Danh sách</a>
+                                </li>
+                                <li><a href="admin/cate/them-cate">Thêm</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-toggle="collapse" data-target="#product">
+                                <i class="fas fa-copy"></i>
+                                <span style="color: #DCDCDC">Sản Phẩm</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul id="product" class="collapse">
+                                
+                                <% cate.forEach(e => { %>
+                                    <li>
+                                        <a href="/admin/<%= e.alias %>"><%= e.ten %></a>
+                                    </li>
+                                <% }) %>
+                                
+                                
+                                <li><a href="/admin/product/them">Thêm</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-toggle="collapse" data-target="#demo">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span style="color: #DCDCDC">Đơn Hàng</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul id="demo" class="collapse">
+                                <li><a href="/admin/cart/danh-sach">Danh sách</a></li>  
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>

@@ -1,0 +1,184 @@
+<% include ../layouts/header.ejs %>
+<% 
+  
+      function chuyentien(e) {
+          let vitri = e.split('');
+          let result = '';
+          let index = Math.ceil((vitri.length)/3);
+          if(index == 2) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+          }
+          if(index == 3) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1= vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+          if(index == 4) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1 = vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+
+              let add2 = vitri.length - 11;
+              vitri.splice(add2, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+
+
+
+      }
+
+ %>
+
+
+
+
+<div class="wapper container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          
+        </ol>
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active wapper1" style="background-image: url('./image/img-wapper1.jpeg')">
+            <h3>Giảm ngay 2.000.000 ₫ khi mua RTX 2080</h3>
+            <img src="./upload/27062_vga_msi_geforce_rtx_2080ti_duke_11gb_oc_gddr6_1.png"  alt="">
+            <del class="price">22.990.000</del>
+            <span class="final-price">24.990.000</span>
+           
+            <a href="/msi-rtx-2080-duke-8g-oc.htm">Đến ngay</a>
+          </div>
+          
+          <div class="carousel-item wapper2" style="background-image: url('./image/img-wapper2.jpeg')">
+              <h3>Giảm giá lên đến 70% các sản phẩm bàn phím</h3>
+              <div class="pro-1">
+                <img class="img1" src="./image/bp-7.png" alt="">
+                <del>990.000  ₫</del>
+                <span> 390.000  ₫</span>
+
+              </div>
+              <div class="pro-2">
+
+                <img class="img2" src="./image/Bp_1.png" alt="">
+                <del>590.000  ₫</del>
+                <span> 290.000  ₫</span>
+              </div>
+              <a href="/ban-phim.html">Xem ngay</a>
+          </div>
+          
+          
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          
+          <i></i>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <i></i>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+</div>
+</div>
+<div class="container trademark">
+  <div class="row top">
+    <div class="col-12 text-center">
+      <h2>Thương Hiệu</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+        <img src="./image/gigabyte.png" width="340px" height="200px"  alt="">
+      </a>
+      
+    </div>
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+        <img src="./image/asus_logo.jpg"  width="340px" height="200px" alt="">
+      </a>
+        
+    </div>
+    
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+        <img src="./image/dell_1.jpg" width="340px" height="200px" alt="">
+      </a>
+        
+    </div>
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+          <img src="./image/samsung.png" width="340px" height="200px" alt="">
+      </a>
+        
+    </div>
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+        <img src="./image/intel-min.jpg" width="340px" height="200px" alt="">
+      </a>
+      
+    </div>
+    
+    <div class="col-lg-4 col-md-6 col-12">
+      <a href="">
+        <img src="./image/corsair.png" width="340px" height="200px" alt="">
+      </a>
+      
+    </div>
+  </div>
+</div>
+<div class="container" id="content">
+    <% cate.forEach(ds => { %>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <span><%= ds.ten %></span>
+                    
+                </div>
+                    
+                    <% all.forEach(data => {  %>
+                        <% if(ds.id == data.id_ds) { let img = data.hinh_anh.split(',') %>
+                        <div class="col-lg-3 col-sm-6 col-12 item" style="width: 18rem;">
+                            <a href="/<%= data.link %>.htm">
+                                <img class="card-img-top" src="<%= img[0] %>" alt="Card image cap">
+                                <p class="tittle"><%= data.ten %></p>
+                                <div class="price">
+                                
+                                <% if(data.giam_gia != 0) { %>
+                                    <span class="final-price"><%= chuyentien(`${data.giam_gia}`) %> ₫</span>
+
+                                    <del><%= chuyentien(`${data.gia}`) %> ₫</del>
+                                    <span class="sale">-<%= data.percent %>%</span>
+                                <% }else {  %>
+                                    <span class="final-price"><%= chuyentien(`${data.gia}`) %> ₫</span>
+                                <% } %>
+                                
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                    <% })  %>
+            </div>
+       
+    <% }) %>
+</div>
+
+<% include ../layouts/footer.ejs %>

@@ -1,0 +1,36 @@
+<% include ../../layouts/header.ejs %>
+
+
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 sua-cate">
+    <div class="row">
+        <div class="content-header col-lg-5">
+            <h3>Thêm sản phẩm</h3>
+        </div>
+    </div>
+    <div class="row content">
+        <% if(success_msg != '') {%>
+            <div class="alert alert-success"><%= success_msg%></div>
+        <% } %>
+        <div class="content-body col-lg-12">
+            <div class="description col-lg-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Chọn sản phẩm cần thêm:</label>
+                    <select id="select" class="form-control">
+                            
+                        <% cate.forEach(e => { %>
+                            <option value="<%= e.alias %>"><%= e.ten %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div id="add">
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include ../../layouts/footer.ejs %>

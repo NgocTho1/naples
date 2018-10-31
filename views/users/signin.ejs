@@ -1,0 +1,36 @@
+<% include ../layouts/header.ejs %>
+
+<div class="container" id="signin">
+    <div class="row">
+
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 offset-lg-4">
+            <form action="/user/signin" method="POST" role="form">
+                <legend>Đăng nhập</legend>
+
+                <div class="form-group">
+                    <label for="">Email:</label>
+                    <input type="text" class="form-control" id="" name="email" value="<%= valEmail %>" placeholder="Email">
+                </div>
+                <p style="color:red">
+                    <%= errEmail %>
+                </p>
+                <div class="form-group">
+                    <label for="">Mật khẩu:</label>
+                    <input type="text" class="form-control" id="" name="password" placeholder="Mật khẩu">
+                </div>
+                <input type="hidden" name="queryRedirect" value="">
+                <button type="submit" class="btn btn-primary">Đăng nhập
+                    <i class="fas fa-location-arrow"></i>
+                </button>
+
+
+                <input type="hidden" name="_csrf" value="">
+ 
+            </form>
+           
+        </div>
+
+    </div>
+</div>
+
+<% include ../layouts/footer.ejs %>

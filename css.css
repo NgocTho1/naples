@@ -1,0 +1,450 @@
+header{
+    position: relative;
+}
+a{
+    text-decoration: none !important;
+}
+
+.dropdown{
+    position: static;
+}
+header .header-top{
+    position: relative;
+    padding: 15px 0
+}
+header .header-top .logo{
+    font-size: 35px;
+    font-family: cursive;
+    color: #00a8ff;
+    margin-right: 35px;
+    
+}
+header .header-top .text-left{
+    position: relative;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+    font-weight: 500;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #f1c40f;
+    transition: 0.4s;
+}
+
+header .header-top .text-right {
+    padding: 20px;
+}
+header .header-top .text-right .user-profile a{
+    text-decoration: none;
+    color: #00a8ff;
+}
+header .header-top .phone{
+    position: absolute;
+    top: 23px
+}
+header .header-top .phone .fa-phone{
+    transform: rotate(90deg)
+}   
+
+header .header-top .text-right .user-profile, header .header-top .text-right .header-cart{
+    display: inline-block;
+}
+header .header-top .text-right .header-cart{
+    padding-right: 40px;
+    position: relative;
+    color: #00a8ff;
+    margin-left: 20px
+}
+header .header-top .text-right .header-cart fas{
+    font-size: 23px;
+}
+header .header-top .text-right .header-cart span{
+    top: -1px;
+    position: absolute;
+    color: black;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 50%;
+    background-color: #fbc531;
+    padding: 2px 8px;
+    margin-left: 5px;
+}
+nav .dropdown a.nav-link{
+    padding: 15px 0;
+}
+
+header .header-top .search{
+    position: relative;
+    margin-top: 15px;
+}
+header .header-top .search input{
+    padding: 6px 40px 6px 10px;
+    width: 100%;
+    box-shadow: none
+}
+header .header-top .search button{
+    position: absolute;
+    right: 0;
+    margin-left: 10px;
+    border: none
+}
+header nav{
+    background-color: rgba(43, 127, 208, 0.69)
+}
+header nav .tp-menu ul{
+    width: 100%;
+}
+header nav .tp-menu ul li{
+    width: 16.6666666%;
+}
+header nav .tp-menu ul li i{
+    display: none
+}
+header nav .tp-menu ul li:hover .cp{
+    display: block
+}
+header nav .tp-menu>ul>li>a{
+    text-decoration: none;
+    display: block;
+    text-align: center
+}
+header nav .tp-menu ul li .dropdown{
+    font-weight: 500;
+    color: black;
+    display: inline-block;
+}
+
+header nav .tp-menu>ul>li .cp{
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 60px;
+    padding: 15px 15px 15px 5px;
+    z-index: 99;
+   
+}
+
+header nav .tp-menu>ul>li .cp ul{
+    list-style: none;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 5px;
+}
+header nav .tp-menu>ul>li .cp ul li{
+    display: inline;
+    
+}
+header nav .tp-menu>ul>li .cp ul li a{
+    display: block;
+    text-decoration: none
+}
+
+.dropdown-item:focus, .dropdown-item:hover{
+    background-color: inherit
+}
+
+.wapper a i{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    
+    position: relative;
+    z-index: 99;
+    transform: rotate(-135deg)
+}
+.wapper .carousel-control-next i{
+    transform: rotate(45deg)
+}
+.wapper a i:before, .wapper a i:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #212529
+}
+.wapper a i:after{
+    transform: rotate(90deg);
+    top: 50%;
+    left: 50%;
+}
+
+
+.carousel-indicators li{
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+}
+.trademark .row div{
+    text-align: center;
+    margin: 15px 0px;
+    position: relative;
+    overflow: hidden;
+}
+.trademark{
+    margin-bottom: 30px
+}
+.trademark .top{
+    padding: 30px 0;
+}
+.trademark .row div.col-lg-4:hover:before{
+    top: 0
+}
+.trademark .row div.col-lg-4:hover:after{
+    top: 0
+}
+.trademark .row div.col-lg-4 a:hover:before{
+    left: 0;
+}
+.trademark .row div.col-lg-4 a:hover:after{
+    left: 0;
+}
+.trademark .row div.col-lg-4:before, .trademark .row div.col-lg-4:after{
+    height: 200px;
+    width: 1px;
+   
+}
+.trademark .row div.col-lg-4 a:before, .trademark .row div.col-lg-4 a:after{
+    height: 1px;
+    width: 380px;
+}
+.trademark .row div.col-lg-4 a:before{
+    left: 100%;
+}
+.trademark .row div.col-lg-4 a:after{
+    right: -100%;
+    top: 199px
+}
+
+.trademark .row div.col-lg-4:before{
+    left: 0;
+    top: -100%
+}
+.trademark .row div.col-lg-4:after{
+    right: 0;
+    top: 100%;
+}
+.trademark .row div.col-lg-4:before, .trademark .row div.col-lg-4:after, .trademark .row div.col-lg-4 a:before, .trademark .row div.col-lg-4 a:after{
+    transition: all .4s;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 99;
+    background: #009bcb;
+}
+#content .row>.col-lg-12{
+    margin-bottom: 20px
+}
+#content .row>.col-lg-12 span{
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+}
+#content .row>.col-lg-12 a{
+    color: #e74c3c;
+    margin-left: 50px;
+    padding: 8px;
+    font-weight: 600;
+}
+#content .row a:hover{
+   color: inherit
+}
+#content .row .item{
+    margin-bottom: 20px
+}
+#content .row>.item:hover{
+    transition: 0.5s;
+    box-shadow: 0 5px 25px rgba(0,0,0,.2)
+}
+#content .row .item .tittle{
+    margin: 20px 0;
+    color: black
+}
+#content .row .item a{
+    display: block
+}
+#content .row .item .price{
+    margin-bottom: 15px
+}
+#content .row .item img{
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+}
+#content .row .item .price .final-price{
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: 600
+}
+#content .row .item .price .sale{
+    font-size: 12px;
+    font-weight: 600;
+    color: #e74c3c;
+}
+#content .row .item .price del{
+    color: #95a5a6;
+    font-size: 12px;
+    margin: 0 6px
+}
+
+footer{
+    padding: 50px;
+    background: #f0f0f0;
+}
+footer .contact .phone{
+    margin-bottom: 20px
+}
+footer .contact .phone .fas{
+    transform: rotate(90deg);
+    font-size: 25px;
+    margin-right: 10px
+}
+footer .contact a i{
+    border-radius: 50%;
+    margin-left: 10px
+}
+footer .contact a i.fa-facebook-f{
+    padding: 9px 13px;
+    border: 1px solid #007bff;
+}
+footer .contact a i.fa-google-plus-g{
+    color: #dc4e41;
+    border: 1px solid #dc4e41;
+    padding: 9px 7px;
+}
+footer .contact a i.fa-twitter{
+    color: #1da1f2;
+    border: 1px solid #1da1f2;
+    padding: 9px 10px;  
+}
+footer .contact a:hover i{
+    transition: .8s;
+    color: white;
+}
+footer .contact a:hover i.fa-facebook-f{
+    background: #007bff;
+}
+footer .contact a:hover i.fa-google-plus-g{
+    background: #dc4e41;
+}
+footer .contact a:hover i.fa-twitter{
+    background: #1da1f2;
+}
+footer .left a, footer .center a{
+    display: block;
+    margin: 10px 0;
+}
+footer .col-lg-4 p, footer .col-lg-4 p{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+@media (max-width: 991px) {
+    header nav {
+        background-color: inherit
+    }
+    header .header-top{
+        margin-bottom: 10px;
+        padding: 0
+    }
+    .dropdown-toggle::after{
+        content : none
+    }
+    header .navbar{
+        position: absolute !important;
+        right: 0px;
+        top: 5px;
+    }
+    .bg-light{
+        background-color: none !important
+    }
+    header nav .tp-menu{
+        position: absolute;
+        width: 690px;
+        top: 120%;
+        right: 15px;
+        background-color: beige;
+        max-height: 335px;
+        overflow-y: auto;
+        z-index: 99;
+    }
+    header nav .tp-menu>ul>li>a{
+        text-align: left;
+        margin-left: 40px;
+    }
+    header .header-top .phone{
+        display: none;
+    }
+    header .header-top .text-right{
+        display: none;
+    }
+    header nav .tp-menu ul li{
+        width: 100%;
+        position: relative;
+    }
+    header nav .tp-menu ul li i{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 11px 18px 11px 11px;
+        font-size: 18px;
+    }
+    header nav .tp-menu>ul>li .cp {
+        
+    }
+    
+    .dropdown-menu{
+        display: none !important;
+    }
+    .dropdown-menu.show{
+        display: block !important;
+    }
+    .navbar-nav .dropdown-menu{
+        position: static!important;
+        float: none;
+    }
+}
+
+@media (max-width: 767px) {
+
+    header nav {
+        background-color: inherit
+    }
+    nav{
+        display: inline-block !important;
+        width: 94.5%;
+    }
+    nav button{
+        margin-right: 20px;
+        float: right;
+    }
+    header nav .tp-menu{
+        width: 100%;
+    }
+
+    .fas.fa-angle-left, .fas.fa-angle-right{
+        font-size: 30px
+    }
+    .carousel-indicators li{
+        width: 8px;
+        height: 8px;
+    }
+    .wapper a i{
+        width: 20px;
+        height: 20px;
+    }
+    .wapper a i:before, .wapper a i:after{
+        height: 1px;
+    }
+    #content .row>.col-lg-12 span{
+        font-size: 20px;
+    }
+    #content .row>.col-lg-12 a{
+        margin-left: 0;
+        font-size: 13px;
+    }
+}

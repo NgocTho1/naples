@@ -1,0 +1,216 @@
+<% include ../layouts/header.ejs %>
+<% 
+  
+      function chuyentien(e) {
+          let vitri = e.split('');
+          let result = '';
+          let index = Math.ceil((vitri.length)/3);
+          if(index == 2) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+          }
+          if(index == 3) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1= vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+          if(index == 4) {
+              let add = vitri.length - 3;
+              vitri.splice(add, 0 , '.');
+              
+              let add1 = vitri.length - 7;
+              vitri.splice(add1, 0 , '.');
+
+              let add2 = vitri.length - 11;
+              vitri.splice(add2, 0 , '.');
+              vitri.forEach(e => {
+                  result += e;
+              });
+              return result;
+              
+          }
+
+
+
+      }
+
+ %>
+<div class="container shopping-header">
+    <div class="row">
+        
+            <% if(login) { %>
+                <div class="col-md-6 disable">
+                        <span>Bước 1 :</span>
+                        <span >Đăng nhập</span>
+                    </div>
+                    <div class="col-md-6 active">
+                        <span>Bước 2 :</span>
+                        <span >Đặt hàng</span>
+                </div>          
+            <% } else {%>
+            <div class="col-md-6 active">
+                <span>Bước 1 :</span>
+                <span >Đăng nhập</span>
+            </div>
+            <div class="col-md-6 disable">
+                <span>Bước 2 :</span>
+                <span >Đặt hàng</span>
+            </div>
+            <% } %>
+        
+    </div>
+</div>
+
+<div class="container" id="checkout" >
+   
+            <% if(login) {%>
+                <form action="" method="POST" class="submit">
+                    <div class="row">
+
+                        <div class="col-lg-7">
+                            <p class="title-header">Địa chỉ giao hàng :</p>
+                            <div class="form-group row">
+                                    <label for="inputEmail3" class="col-lg-3 control-label">Họ tên:</label>
+                            
+                                    <div class="col-lg-9">
+                                        <input type="text" name="name" id="name" class="form-control"  placeholder="Họ tên">
+                                        <p class="err-name"><%= err.name %></p>
+                                        <p class="err-special"></p>
+                                        
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-lg-3 control-label">Số điện thoại:</label>
+                        
+                                <div class="col-lg-9">
+                                    <input type="text" name="phone" id="phone" class="form-control"  placeholder="Số điện thoại">
+                                    <p class="err-phone"></p>
+                                    <p class="err-number"><%= err.phone %></p>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label for="inputEmail3" class="col-lg-3 control-label">Địa chỉ:</label>
+                            
+                                    <div class="col-lg-9">
+                                        <input type="text" name="diachi" id="diachi" class="form-control"  placeholder="Địa chỉ">
+                                        <p class="err-diachi"><%= err.diachi %></p>
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-lg-3 control-label">Tỉnh/Thành phố :</label>
+                                <div class="col-lg-9">
+                                    <select name="province" class="form-control" id="province">
+                                        <option value="" >Chọn Tỉnh/Thành phố</option>
+                                        <% tinh.forEach(e => { %>
+                                            <option value="<%= e.matp %>"><%= e.ten %></option>
+                                        <% }) %>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-lg-3 control-label">Quận/Huyện :</label>
+                                <div class="col-lg-9">
+                                    <select name="dictrict" class="form-control" id="dictrict">
+                                        <option value="">Chọn Quận/Huyện</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-lg-3 control-label">Phường/Xã :</label>
+                                <div class="col-lg-9">
+                                    <select name="ward" class="form-control" id="ward">
+                                        <option value="">Chọn Phường/Xã</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 offset-lg-3 err-msg"><%= err.province %></div>   
+                        
+                        </div>
+
+                        <div class="col-lg-5">
+                            <p class="title-header">
+                                Đơn hàng của bạn :
+                            </p>
+                            <% let totalPrice = 0; all.forEach(e => { totalPrice += e.price %>
+                            
+                                <div class="item">
+                                    <p class="tittle">
+                                        
+                                        <a href="<%= e.item.link %>.htm"><%= e.item.ten %></a>
+                                        
+                                    </p>
+                                    <p class="text-center">X <%= e.qty %></p>
+                                    
+                                    <p class="price">
+                                        
+                                            <%= chuyentien(`${e.price}`) %>  
+                                        
+
+                                    </p>
+                                </div>
+                            <% }) %>
+                            
+                            <div class="total-price">
+                                <span class="total">Thành tiền :</span>
+                                <span class="price"><%= chuyentien(`${totalPrice}`) %></span>
+                            </div>
+                            <button type="submit" class="btn btn-danger cart-checkout">Đặt mua</button>
+                            
+                        </div>
+
+                    </div>
+
+                </form>
+
+            <% }else { %>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-lg-offset-4" style="margin : 0 auto">
+                        <form action="/user/signinCheckout" method="POST" role="form">
+                            
+            
+                            <div class="form-group">
+                                <label for="">Email:</label>
+                                <input type="text" class="form-control" id="" name="email" value="" placeholder="Email">
+                            </div>
+                            <p style="color:red">
+                                
+                            </p>
+                            <div class="form-group">
+                                <label for="">Mật khẩu:</label>
+                                <input type="text" class="form-control" id="" name="password" placeholder="Mật khẩu">
+                            </div>
+                            <input type="hidden" name="queryRedirect" value="">
+                            <button type="submit" class="btn btn-primary">Đăng nhập
+                                <i class="fas fa-location-arrow"></i>
+                            </button>
+            
+            
+                            <input type="hidden" name="_csrf" value="">
+             
+                        </form>
+                       
+                </div> 
+
+
+            <% } %>
+
+   
+</div>
+
+
+
+
+<% include ../layouts/footer.ejs %>

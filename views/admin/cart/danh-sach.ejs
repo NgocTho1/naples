@@ -1,0 +1,53 @@
+<% include ../layouts/header.ejs %>
+
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 sua-cate">
+        <div class="row">
+            <div class="content-header col-lg-5">
+                <h3>Danh sách đơn hàng</h3>
+            </div>
+        </div>
+        <div class="row content">
+           
+            <div class="content-body col-lg-12">
+                    
+                    <table id="example" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Tên khách hàng</th>
+                                    <th>Ngày</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <% checkout.forEach(e => { %>
+                                        <tr>
+                                            
+                                            <td><%= e.ten %></td>
+                                            <td><%= e.date %></td>
+                                            <td><%= e.tong_tien %></td>
+                                            <td>
+                                                <% if(e.state == 0) { %>
+                                                    Chờ xử lý
+                                                <% }else if(e.state == 1) { %>
+                                                    Đang giao hàng
+                                                <% }else{ %>
+                                                    Đã giao hàng
+                                                <% } %>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/cart/<%= e.id %>"><button class="btn btn-primary">Chi tiết</button></a>
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                    <% }) %>
+                            </tbody>
+                    </table>
+            </div>
+        </div>
+</div>
+
+
+<% include ../layouts/footer.ejs %>

@@ -1,0 +1,19 @@
+
+    <% all.forEach(data => {  %>
+        <% let img = data.hinh_anh.split(',') %>
+        <div class="col-lg-3 col-sm-6 col-12 item" style="width: 18rem;">
+            <a href="/<%= data.link %>.htm">
+                <img class="card-img-top" src="<%= img[0] %>" alt="Card image cap">
+                <p class="tittle"><%= data.ten %></p>
+                <div class="price">
+                <span class="final-price"><%= data.gia %></span>
+                <% if(data.giam_gia != 0) { %>
+                    <del><%= data.giam_gia %></del>
+                    <span class="sale"><%= data.percent %>%</span>
+                <% }  %>
+                
+                </div>
+            </a>
+        </div>
+        
+    <% })  %>

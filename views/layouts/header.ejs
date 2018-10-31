@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="http://localhost:4300">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/css.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row header-top">
+            <div class="col-lg-4 col-md-4 col-12 text-left">
+              <a class="navbar-brand logo" href="#">Ahaha</a>
+              <span class="phone">
+                <i class="fas fa-phone"></i>
+                01686791933
+              </span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 center">
+              <form class="form-inline search" >
+                  <input class="form-control search-input" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+                <div class="suggest">
+                
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 text-right">
+              <div class="user-profile">
+                <% if(login) { %>
+                  <div class="user-header">
+                    <span>Chào <%= user %></span>
+                    <div class="box">
+                      <a href="">Thông tin</a>
+                      <a href="/user/don-hang">Đơn hàng của bạn</a>
+                      <a href="/user/da-xem">Sản phẩm bạn đã xem</a>
+                      <a href="/user/logout">Đăng xuất</a>
+                    </div>
+                  </div>
+                  
+                <% }else{ %>
+                  <a href="/user/signup">Đăng ký |</a>
+                  <a href="/user/signin">Đăng nhập</a>
+                <% } %>
+                
+              </div>
+              <div class="header-cart">
+                <a href="/checkout">
+                  <i class="fas fa-shopping-cart"></i> 
+                  <% if(session.spCart) {%>
+                    <span id="cartNumber"><%= session.totalQty %></span>
+                  <% }else if(session.CartData1) {%>
+                    <span id="cartNumber"><%= session.totalQtyUser %></span>
+                  <% } else{ %>
+                    <span id="cartNumber">0</span> 
+                  <% } %>
+                </a>
+               
+              </div>
+            </div>
+            
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse tp-menu" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <a class="nav-link" href="#">
+                    Linh kiện máy tính
+                  </a>
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    <ul class="row">
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">Mainboard - Bo mạch chủ</a>
+                        <a class="item-filter" href="/main.html?thuonghieu=asus">Mainboard Asus</a>
+                        <a class="item-filter" href="/main.html?thuonghieu=gigabyte">Mainboard Gigabyte</a>
+                        <a class="item-filter" href="/main.html?thuonghieu=msi">Mainboard Msi</a>
+                        <a class="item-filter" href="/main.html?thuonghieu=asrock">Mainboard Asrock</a>
+                      </li>
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">Cpu - Bộ vi xử lý</a>
+                        <a class="item-filter" href="">CoffeeLake</a>
+                        <a class="item-filter" href="">KabyLake</a>
+                        <a class="item-filter" href="">Intel Core I3</a>
+                        <a class="item-filter" href="">Intel Core I5</a>
+                        <a class="item-filter" href="">Intel Core I7</a>
+                        <a class="item-filter" href="">AMD - Ryzen</a>
+
+                      </li>
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">VGA - Card màn hình</a>
+                        <a href="/vga.html?thuonghieu=asus">VGA - Asus</a>
+                        <a href="/vga.html?thuonghieu=gigabyte">VGA - Gigabyte</a>
+                        <a href="/vga.html?thuonghieu=msi">VGA - Msi</a>
+                        <a href="/vga.html?thuonghieu=galax">VGA - Galax</a>
+                        <a href="/vga.html?thuonghieu=palit">VGA - Palit</a>
+                      </li>
+                        
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">PSU - Nguồn máy tính</a>
+                        <a href="">PSU - Dưới 400w</a>
+                        <a href="">PSU - 400w đến 500w</a>
+                        <a href="">PSU - 500w đến 600w</a>
+                        <a href="">PSU - 600w đến 700w</a>
+                        <a href="">PSU - Trên 800w</a>
+                      </li>
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">Ram - Bộ nhớ trong</a>
+                        <a href="/ram.html?thuonghieu=g-skill">Ram - Gskill</a>
+                        <a href="/ram.html?thuonghieu=adata">Ram - Adata</a>
+                        <a href="/ram.html?thuonghieu=kingmax">Ram - KingMax</a>
+                        <a href="/ram.html?thuonghieu=kingston">Ram - KingTon</a>
+                      </li>
+                        
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">Case - Vỏ máy tính</a>
+                        <a href="/thung-may.html?thuonghieu=gigabyte">Case - Gigabyte</a>
+                        <a href="/thung-may.html?thuonghieu=sama">Case - Sama</a>
+                        <a href="/thung-may.html?thuonghieu=corsair">Case - Corsair</a>
+                       
+                        <a href="/thung-may.html?thuonghieu=aigo">Case - Aigo</a>
+                        <a href="/thung-may.html?thuonghieu=cooler-master">Case - Cololer Master</a>
+                      </li>
+                      <li class="col-lg-3 col-12 dropdown-item">
+                        <a class="dropdown" href="">Tản nhiệt</a>
+                        <a href="">Tản nhiệt nước</a>
+                        <a href="">Tản nhiệt khí</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <a class="nav-link" href="#">Màn hình</a>
+                  
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    
+                      <ul class="row">
+                        <li class="col-lg-3 col-12 dropdown-item">
+                          <a href="" class="dropdown">Thương hiệu màn hình</a>
+                          <a href="/man-hinh.html?thuonghieu=asus">Màn hình Asus</a>
+                          <a href="/man-hinh.html?thuonghieu=dell">Màn hình Dell</a>
+                          <a href="/man-hinh.html?thuonghieu=lg">Màn hình LG</a>
+                          <a href="/man-hinh.html?thuonghieu=samsung">Màn hình Samsung</a>
+                          
+                          <a href="/man-hinh.html?thuonghieu=acer">Màn hình Acer</a>
+                          <a href="/man-hinh.html?thuonghieu=viewsonic">Màn hình Viewsonic</a>
+                          
+                          <a href="/man-hinh.html?thuonghieu=benq">Màn hình Benq</a>
+                          <a href="/man-hinh.html?thuonghieu=hkc">Màn hình HKC</a>
+                          <a href="/man-hinh.html?thuonghieu=aoc">Màn hình AOC</a>
+                        </li>
+                        <li class="col-lg-3 col-12 dropdown-item">
+                          <a href="" class="dropdown">Độ phân giải</a>
+                          <a href="">Full HD</a>
+                          <a href="">2K</a>
+                          <a href="">4K</a>
+                        </li>
+                        <li class="col-lg-3 col-12 dropdown-item">
+                          <a href="" class="dropdown">Tần số quét</a>
+                          <a href="">60hz</a>
+                          <a href="">75hz</a>
+                          <a href="">144hz</a>
+                          <a href="">165hz</a>
+                          <a href="">240hz</a>
+                        </li>
+                        <li class="col-lg-3 col-12 dropdown-item">
+                          <a href="" class="dropdown">Kích thước</a>
+                          <a href="">17" - 21"</a>
+                          <a href="">22" - 24"</a>
+                          <a href="">25" - 32"</a>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#">Bàn phím</a>
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    
+                      <ul class="row">
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Thương hiệu bàn phím</a>
+                          <a href="/ban-phim.html?thuonghieu=logitech">Logitech</a>
+                          <a href="/ban-phim.html?thuonghieu=fulhlen">Fuhlen</a>
+                          <a href="/ban-phim.html?thuonghieu=dareu">Dareu</a>
+                          <a href="/ban-phim.html?thuonghieu=corsair">Corsair</a>
+                          <a href="/ban-phim.html?thuonghieu=razer">Razer</a>
+                          <a href="/ban-phim.html?thuonghieu=ducky">Ducky</a>
+                        </li>
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Mức giá</a>
+                          <a href="">Dưới 500.000</a>
+                          <a href="">500.000 - 1.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">Trên 3.000.000</a>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#">Ổ cứng</a>
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    
+                      <ul class="row">
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Ổ cứng HDD</a>
+                          <a href="">Dưới 1TB</a>
+                          <a href="">1TB - 2TB</a>
+                          <a href="">3TB - 4TB</a>
+                          
+                          <a href="">Từ 6TB trở lên</a>
+                        </li>
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Ổ cứng SSD</a>
+                          <a href="">120GB - 128GB</a>
+                          <a href="">240GB - 256GB</a>
+                          <a href="">480GB - 512GB</a>
+                          <a href="">1TB -2TB</a>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#">Chuột</a>
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    
+                      <ul class="row">
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Thương hiệu chuột</a>
+                          <a href="/chuot.html?thuonghieu=logitech">Chuột Logitech</a>
+                          <a href="/chuot.html?thuonghieu=fulhlen">Chuột Fuhlen</a>
+                          
+                          <a href="/chuot.html?thuonghieu=corsair">Chuột Corsair</a>
+                          <a href="/chuot.html?thuonghieu=razer">Chuột Razer</a>
+                          <a href="/chuot.html?thuonghieu=steelseries">Chuột SteelSeries</a>
+                        </li>
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Mức giá</a>
+                          <a href="">Dưới 500.000</a>
+                          <a href="">500.000 - 1.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">Trên 3.000.000</a>
+                        </li>
+                        
+                      </ul>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#">Tai nghe</a>
+                  <i class="fas fa-angle-down dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <div class="cp container dropdown-menu" id="drop" aria-labelledby="navbarDropdown">
+                    
+                      <ul class="row">
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Thương hiệu tai nghe</a>
+                          <a href="/tai-nghe.html?thuonghieu=razer">Tai nghe Razer</a>
+                          <a href="/tai-nghe.html?thuonghieu=kingston">Tai nghe Kingston HyperX</a>
+                          <a href="/tai-nghe.html?thuonghieu=ozone">Tai nghe Ozone</a>
+                          <a href="/tai-nghe.html?thuonghieu=corsair">Tai nghe Corsair</a>
+                          <a href="/tai-nghe.html?thuonghieu=logitech">Logitech</a>
+                        </li>
+                        <li class="col-lg-6 col-12 dropdown-item">
+                          <a href="" class="dropdown">Mức giá</a>
+                          <a href="">Dưới 500.000</a>
+                          <a href="">500.000 - 1.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">1.000.000 - 2.000.000</a>
+                          <a href="">Trên 3.000.000</a>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </li>
+              </ul>
+              
+            </div>
+          </nav>
+        </div>
+    </header>
+    

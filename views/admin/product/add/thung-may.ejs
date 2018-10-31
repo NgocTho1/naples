@@ -1,0 +1,74 @@
+<form action="/admin/product/add" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="name" value="" name="name" value="" class="form-control" id="exampleInputEmail1" >
+    </div>
+    <input type="hidden" name="idds" value="<%= cateAlias %>">
+    <div class="form-group">
+        <label for="exampleInputCate">Thương hiệu</label>                                
+        <select class="form-control" name="nsx" id="exampleInputCate">
+            <% thuonghieu.forEach(e => { %>
+                
+                    <option value= '<%= e.id %>'> <%= e.ten_nsx %></option>
+                
+            <% }) %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Hình ảnh</label>
+        
+        <input type="file" name="file" id="exampleInputImg" >
+        <input type="file" name="file"  id="exampleInputImg" >
+        <input type="file" name="file"  id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Giá (VND)</label>
+        <input type="name" name="price" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Sale Off (VND)</label>
+            <input type="name" name="saleOff" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Số lượng</label>
+        <input type="name" name="quality" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Bảo hành</label>
+            <input type="name" name="baohanh" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Màu sắc</label>
+            <input type="name" name="mausac" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Cổng kết nối</label>
+            <input type="name" name="congketnoi" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+            <label for="exampleInputImg">Kích thước</label>
+            <input type="name" name="kichthuoc" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputImg">Hỗ trợ main</label>
+        <input type="name" name="hotromain" value=""  class="form-control" id="exampleInputImg" >
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="exampleInputCate">Thể loại</label>                                
+        <select class="form-control" name="cateId" id="exampleInputCate">
+           
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Chi tiết</label>
+        <textarea id="description" name="description"  class="form-control" rows="4" ></textarea>
+        
+        
+    </div>
+    
+    
+    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-danger">Cancel</button>
+</form>

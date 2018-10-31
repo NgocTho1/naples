@@ -1,0 +1,102 @@
+<% include ../../layouts/header.ejs %>
+
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 sua-cate">
+        <div class="row">
+            <div class="content-header col-lg-5">
+                <h3>Sửa sản phẩm</h3>
+            </div>
+        </div>
+        <div class="row content">
+            <% if(success_msg != '') {%>
+                <div class="alert alert-success"><%= success_msg%></div>
+            <% } %>
+            <div class="content-body col-lg-12">
+                <div class="description col-lg-6">
+                    <h3>Thông tin</h3>
+                    
+                    <div class="sua-content">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="name" value="<%= pro.ten %>" name="name" value="" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCate">Thương hiệu</label>                                
+                                <select class="form-control" name="nsx" id="exampleInputCate">
+                                    <% thuonghieu.forEach(e => { %>
+                                        <% if(e.id == pro.id_nsx) {%>
+                                            <option value= '<%= e.id %>>' selected = 'selected' ><%= e.ten_nsx %></option>
+                                        <% }else{ %>
+                                            <option value= '<%= e.id %>'> <%= e.ten_nsx %></option>
+                                        <% } %>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImg">Hình ảnh</label>
+                                
+                                <input type="file" name="file" id="exampleInputImg" >
+                                <input type="file" name="file"  id="exampleInputImg" >
+                                <input type="file" name="file"  id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImg">Giá (VND)</label>
+                                <input type="name" name="price" value="<%= pro.gia %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Sale Off (VND)</label>
+                                    <input type="name" name="saleOff" value="<%= pro.giam_gia %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImg">Số lượng</label>
+                                <input type="name" name="quality" value="<%= pro.so_luong %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Bảo hành</label>
+                                    <input type="name" name="baohanh" value="<%= pro.bao_hanh %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Dung lượng</label>
+                                    <input type="name" name="dungluong" value="<%= pro.dung_luong %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Kích thước</label>
+                                    <input type="name" name="kichthuoc" value="<%= pro.kich_thuoc %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Chuẩn cắm</label>
+                                    <input type="name" name="chuancam" value="<%= pro.chuan_cam %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Tốc ghi</label>
+                                    <input type="name" name="tocghi" value="<%= pro.toc_ghi %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputImg">Tốc đọc</label>
+                                    <input type="name" name="tocdoc" value="<%= pro.toc_doc %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImg">Tốc độ quay</label>
+                                <input type="name" name="tocdoquay" value="<%= pro.toc_do_quay %>"  class="form-control" id="exampleInputImg" >
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Chi tiết</label>
+                                <textarea id="description" name="description"  class="form-control" rows="4" ></textarea>
+                                
+                                
+                            </div>
+                            
+                            
+                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-danger">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<% include ../../layouts/footer.ejs %>
