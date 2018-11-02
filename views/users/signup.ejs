@@ -1,14 +1,16 @@
-﻿<% include ../layouts/header.ejs %>
-<div class="container">
+<% include ../layouts/header.ejs %>
+<div class="container" id="signup">
     <div class="row">
         
         <div class="col-lg-4 offset-lg-4">
 
-            <form action="/user/signup" method="POST" style="margin:50px 0px" class="form-horizontal">
+            <form action="/user/signup" method="POST" style="margin:50px 0px" class="form-horizontal submit">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-12 control-label">Họ và tên:</label>
                     <div class="col-sm-12">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Họ và tên">
+                        <p class="err-name" style="color:red"></p>
+                        <p class="err-special" style="color:red"></p>
                     </div>
                 </div>
                 <h6 id="err-user"></h6>
@@ -18,25 +20,26 @@
             
                     <div class="col-sm-12">
                         <input type="text" name="email" class="form-control" id="email" placeholder="Email">
-            
+                        <p class="err-email" style="color:red"></p>
                     </div>
             
             
                 </div>
-                <h6 class="err-email" style="color:red">
-                    <%= message %>
-                </h6>
+                <p style="color:red">
+                        <%= message %>
+                </p>
                 <h6 id="err-email"></h6>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-12 control-label">Mật khẩu:</label>
                     <div class="col-sm-12">
                         <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
+                        <p class="err-pw" style="color:red"></p>
                     </div>
                 </div>
                 <h6 id="err-pw"></h6>
             
                 <input type="hidden" name="_csrf" value="">
-                <button type="submit" class="btn btn-primary" style="margin-left: 20px">Submit</button>
+                <button type="submit" class="btn btn-primary" style="margin-left: 20px">Đăng ký</button>
             
             </form>
         </div>

@@ -116,7 +116,7 @@ $(document).ready(function (){
         
     })
 
-    $(document).on('click', '#product span.fa-trash-alt', function() {
+    $(document).on('click', '#product span.deleteCart', function() {
         const group = $(this).closest('.cart-content');
         const dataNew = data(group);
        
@@ -138,7 +138,7 @@ $(document).ready(function (){
         })
        
     })
-    $(document).on('click', '.checkout .fa-trash-alt', function() {
+    $(document).on('click', '.checkout span.deleteCart', function() {
         const group = $(this).closest('.cart-content');
         let dataNew = data(group);
      
@@ -358,6 +358,48 @@ $(document).ready(function (){
         return true;
         
     })
+    $('#signup .submit').submit(function() {
+        let name = $('.form-group #name').val();
+        let email = $('.form-group #email').val();
+        let pw = $('.form-group #password').val();
+        
+        let ru = /^[a-zA-Z0-9À ÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐđĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+$/;
+        let testEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+        if(name.length < 5 || name.length >= 50 || !ru.test(name)){
+            return false
+        }
+        if(!testEmail.test(email)){
+            return false
+        }
+        if(pw.length < 5 || pw.length > 20) {
+            return false
+        }
+        return true;
+        
+    })
+
+    $('.form-group #email').blur(function() {
+        var email = $('#email').val();
+        var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+        if (re.test(email)) {
+            $('.err-email').hide()
+        } else {
+            $('.err-email').show();
+            $('.err-email').text('Email không đúng định dạng');
+        }
+    });
+    $('.form-group #password').blur(function() {
+        var pw = $('#password').val();
+        
+        if (pw.length < 5 || pw.length > 20) {
+            $('.err-pw').show();
+            $('.err-pw').text('Mật khẩu từ 6 đến 20 kí tự');
+        } else {
+            $('.err-pw').hide()
+        }
+    })
+
+
     $('.form-group #name').blur(function() { 
         let name = $(this).val();
         
@@ -372,6 +414,7 @@ $(document).ready(function (){
             $('.err-name').text('Tên từ 5 đến 50 ký tự')
         let name = $(this).val();
         }else if (!ru.test(name)) {
+          
             $('.err-name').hide()
             $('.err-special').show();
             $('.err-special').text('Không có ký tự đặc biệt')
