@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const router = express.Router();
 const connection = require('../config/connection.js');
 var Cart = require('../model/cart.js');
@@ -1063,7 +1063,7 @@ router.get('/checkout/orther', (req, res) => {
                 totalQty(req);
                 totalQtyUser(req);
                
-                res.render('./users/checkoutOther', {tinh : province, all : cartdata.generateArray(), err : error });  
+                res.render('./users/checkoutOther', {errEmail : '',tinh : province, all : cartdata.generateArray(), err : error });  
             }, 50) 
         })
     }else{
@@ -1071,7 +1071,7 @@ router.get('/checkout/orther', (req, res) => {
         
         connection.query('SELECT * FROM tinh', (err, province) => {
             let cartdata = new CartData(req.session.CartData1 ? req.session.CartData1 : {});
-            res.render('./users/checkoutOther', {tinh : province, all : cartdata.generateArray(), err : error});  
+            res.render('./users/checkoutOther', {errEmail : req.flash('err-email'),tinh : province, all : cartdata.generateArray(), err : error});  
            
         })
         
