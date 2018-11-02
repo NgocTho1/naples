@@ -186,7 +186,9 @@
                                 <input type="text" class="form-control" id="" name="email" value="" placeholder="Email">
                             </div>
                             <p style="color:red">
-                                <%= errEmail %>
+				<% if(errEmail != '') { %>
+                                	<%= errEmail %>
+				<% } %>
                             </p>
                             <div class="form-group">
                                 <label for="">Mật khẩu:</label>
