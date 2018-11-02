@@ -1071,7 +1071,7 @@ router.get('/checkout/orther', (req, res) => {
         
         connection.query('SELECT * FROM tinh', (err, province) => {
             let cartdata = new CartData(req.session.CartData1 ? req.session.CartData1 : {});
-            res.render('./users/checkoutOther', {errEmail : req.flash('err-email'),tinh : province, all : cartdata.generateArray(), err : error});  
+            res.render('./users/checkoutOther', {errEmail : 'aaaa',tinh : province, all : cartdata.generateArray(), err : error});  
            
         })
         
