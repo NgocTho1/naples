@@ -54,9 +54,9 @@ function chuyentien(e) {
                 <img class="card-img-top" src="<%= img[0] %>" alt="Card image cap">
                 <p class="tittle"><%= data.ten %></p>
                 <div class="price">
-                <span class="final-price"><%= chuyentien(`${data.gia}`) %></span>
+                <span class="final-price"><%= chuyentien(`${data.gia}`) %> ₫</span>
                 <% if(data.giam_gia != 0) { %>
-                    <del><%= chuyentien(`${data.giam_gia}`) %></del>
+                    <del><%= chuyentien(`${data.giam_gia}`) %> ₫</del>
                     <span class="sale"><%= data.percent %>%</span>
                 <% }  %>
                 
