@@ -1,4 +1,52 @@
 
+
+<% 
+  
+function chuyentien(e) {
+    let vitri = e.split('');
+    let result = '';
+    let index = Math.ceil((vitri.length)/3);
+    if(index == 2) {
+        let add = vitri.length - 3;
+        vitri.splice(add, 0 , '.');
+        vitri.forEach(e => {
+            result += e;
+        });
+        return result;
+    }
+    if(index == 3) {
+        let add = vitri.length - 3;
+        vitri.splice(add, 0 , '.');
+        
+        let add1= vitri.length - 7;
+        vitri.splice(add1, 0 , '.');
+        vitri.forEach(e => {
+            result += e;
+        });
+        return result;
+        
+    }
+    if(index == 4) {
+        let add = vitri.length - 3;
+        vitri.splice(add, 0 , '.');
+        
+        let add1 = vitri.length - 7;
+        vitri.splice(add1, 0 , '.');
+
+        let add2 = vitri.length - 11;
+        vitri.splice(add2, 0 , '.');
+        vitri.forEach(e => {
+            result += e;
+        });
+        return result;
+        
+    }
+
+
+
+}
+
+%>
     <% all.forEach(data => {  %>
         <% let img = data.hinh_anh.split(',') %>
         <div class="col-lg-3 col-sm-6 col-12 item" style="width: 18rem;">
@@ -6,9 +54,9 @@
                 <img class="card-img-top" src="<%= img[0] %>" alt="Card image cap">
                 <p class="tittle"><%= data.ten %></p>
                 <div class="price">
-                <span class="final-price"><%= data.gia %></span>
+                <span class="final-price"><%= chuyentien(`${data.gia}`) %></span>
                 <% if(data.giam_gia != 0) { %>
-                    <del><%= data.giam_gia %></del>
+                    <del><%= chuyentien(`${data.giam_gia}`) %></del>
                     <span class="sale"><%= data.percent %>%</span>
                 <% }  %>
                 
