@@ -25,7 +25,7 @@
                                 <select class="form-control" name="nsx" id="exampleInputCate">
                                     <% thuonghieu.forEach(e => { %>
                                         <% if(e.id == pro.id_nsx) {%>
-                                            <option value= '<%= e.id %>>' selected = 'selected' ><%= e.ten_nsx %></option>
+                                            <option value= '<%= e.id %>' selected = 'selected' ><%= e.ten_nsx %></option>
                                         <% }else{ %>
                                             <option value= '<%= e.id %>'> <%= e.ten_nsx %></option>
                                         <% } %>
