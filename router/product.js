@@ -125,8 +125,7 @@ router.post('/:cate/:pro', upload.any('file'), (req, res) => {
         })
     }
     if(cate == 'ssd') {
-        connection.query(`
-            UPDATE ${cateAlias} SET ten = '${body.name}', hinh_anh = '${fileName}', gia = '${body.price}', 
+        connection.query(`UPDATE ${cateAlias} SET ten = '${body.name}', hinh_anh = '${fileName}', gia = '${body.price}', 
             giam_gia = '${body.saleOff}', so_luong = '${body.quality}', bao_hanh = '${body.baohanh}', 
             dung_luong = '${body.dungluong}', kich_thuoc = '${body.kichthuoc}', chuan_ket_noi = '${body.chuanketnoi}',
             toc_ghi = '${body.tocghi}', toc_doc = '${body.tocdoc}',
